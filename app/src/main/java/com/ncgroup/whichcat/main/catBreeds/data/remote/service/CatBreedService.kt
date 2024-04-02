@@ -52,8 +52,8 @@ class CatBreedService {
         limit: Int
     ): HttpResponse {
 
-        require(BuildConfig.apiKey.isNotBlank()){
-            Throwable("Please add you api token in local.properties")
+        require(BuildConfig.apiKey.isNotEmpty() && !BuildConfig.apiKey.contains("null")){
+            "Please add you api token in local.properties"
         }
 
         return client.get {
